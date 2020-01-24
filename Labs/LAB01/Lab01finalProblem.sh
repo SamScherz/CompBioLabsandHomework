@@ -1,1 +1,1 @@
-cut -f 1 -d, PredPreyData.csv > PredPreyDataFixed.txt | cut -f 2-4 -d, PredPreyData.csv >> PredPreyDataFinalBulletPoint.txt | head -n 1 PredPreyData.csv >> PredPreyDataFinalBulletPoint.txt | tail PredPreyData.csv >> PredPreyDataFinalBulletPoint.txt
+cut -f 1, -d, PredPreyData.csv > PredPreyDataFixed.csv | head -n 1 PredPreyData.csv >> PredPreyDataFixed.csv | tail PredPreyData.csv >> PredPreyDataFixed.csv
