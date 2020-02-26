@@ -8,27 +8,17 @@
 ##For the lines of code below, a sequence of 1-10 is stored as the variable "j". The for loop function prints the statement "hi" the amount of times
 #as defined by the sequence, which is 10 times in this case.
   
-j <- c(1:10)
+j <- c(1:10) 
+
 
 for (i in j) {
   
-  print(paste("hi", i))
+  print("hi", i)
   
 }
 
 ##Problem #2
 ############
-
-#This problem is meant to make this below code easier to write using a for loop and eliminating magic numbers
-
-print((10 + 5 -2.68) * 1)
-print((10 + 5 -2.68) * 2)
-print((10 + 5 -2.68) * 3)
-print((10 + 5 -2.68) * 4)
-print((10 + 5 -2.68) * 5)
-print((10 + 5 -2.68) * 6)
-print((10 + 5 -2.68) * 7)
-print((10 + 5 -2.68) * 8)
       
 
 ##This improved code stores all of the problem #2 integers in the form of variables, and the print command in the for loop adds togeher
@@ -46,62 +36,126 @@ print(paste(PiggyBank + WeeklyNetMoney * i))
   
 }
 
+x <- (c(3,7,-2, -6, 3, 0))
+
+
 ##Problem #3
 ############
-StartingGeneration <- 0
-LastGeneration <- 7
-InitialPopulation <- 2000
-PopulationDecline <- (-0.05)
-#Storing all given values in variable form, "PopulationDecline" is the percent loss of individuals from each generation
 
-Generations <- seq(from = StartingGeneration + 1, to = LastGeneration)
-# storing the sequence of 7 generations as variable "Generations"
+#Lines 54-56 stores our values as variables, and lines 57-60 run a for loop that multiplies the total population
+#of each generation by the rate of declination for each number in the sequence. When "amount * change" is stored as "amount", 
+#then the amount value updates each time the for loop runs. 
 
-PopulationVector <- c(InitialPopulation)
-#Initial population stored as a vector
-
-for(i in Generations) {
-  
-CurrentPopulation <- tail(PopulationVector,1)
-#accesses the first and only object in "PopulationVector": 1
-
-GenerationalDecline <- PopulationDecline * CurrentPopulation
-#Calculates loss of
-
-print(c(i, CurrentPopulation, GenerationalDecline))
-
-DecliningPopulationSIZE <- CurrentPopulation + GenerationalDecline
-
-PopulationVector <- c(PopulationVector, DecliningPopulationSIZE)
- 
-  
+totalYears <- 7
+amount <- 2000
+change <- 0.95
+for ( i in 1:totalYears ) {
+  amount <- amount * change
+  print(amount)
 }
 
 #Problem #4
 ###########
 
-##`n[t] = n[t-1] + ( r * n[t-1] * (K - n[t-1])/K )`
-# Discrete-time logistic growth equation
-
-# **If `n[1] = 2500, K = 10000, and r = 0.8`, then what do you predict for the value of `n[12]`?**
-
-n <- seq(1, 12)
+n <- rep(0, 12)
 n[1] <- 2500
 K <- 10000
 r <- 0.8
 
 
-2500 = n[t-1] + (0.8 * n[t-1] * (10000 - n[t-1]/10000)
-n[2] = 2500 + (0.8 * 2500 * (10000 - 2500/10000)
-               
-for (t in n) {
+for( i in 1:12) { 
+  
+n[i + 1]  <- (1 + r * (1- n[i]/K)) * n[i]
 
-  
-print(paste(n[2] + (r * n[2] * (K - n[2]/K)) ,t))  
-  
-swirl::swirl()  
+##re-formatted the equation because it was giving me problems in the form from the example sheet
+ 
+print(n[i])
+ 
   
 }
 
-##nested for loops are multiplicitave
+
+##Problem #5 
+############
+
+#5a
+
+vec <- rep(0,18)
+
+vec
+
+#5b
+
+for(i in seq(1,18)){
   
+  i <- 3 * i
+  
+  vec <- i
+  
+  print(vec)
+  
+}
+
+#5c 
+
+OldVec <- rep(0,18)
+
+NewVec <- c(1, OldVec)
+
+NewVec
+
+#5d
+
+
+
+for(i in seq(2,18)){
+  
+ NewVec[i] <- (2 * NewVec[i-1]) + 1
+ 
+ print(NewVec[i])
+}
+
+#Problem #6
+###########
+
+n <- 20
+FibVec <- n
+FibVec[1] <- 0
+FibVec[2] <- 1
+for(i in 3:n){
+  
+  FibVec[i] <- FibVec[i-1] + FibVec[i-2]
+  
+ print(FibVec[i-3])
+}
+
+##Problem #7
+############
+
+n <- rep(0, 12)
+n[1] <- 2500
+K <- 10000
+r <- 0.8
+time <- seq(0:11)
+for(i in time) { 
+  
+  n[i + 1]  <- (1 + r * (1- n[i]/K)) * n[i]
+  
+  ##re-formatted the equation because it was giving me problems in the form from the example sheet
+  
+  print(n[i])
+  
+  
+}
+
+abundance <- n[1:12]
+time
+
+plot(abundance~time)
+
+#output should display a graph with a logistic curve
+
+#Problem #8
+###########
+
+
